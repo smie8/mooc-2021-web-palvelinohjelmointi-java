@@ -1,2 +1,5 @@
-Toteuta pakkauksessa hellopath olevaan luokkaan HelloPathController seuraava 
-toiminnallisuus: Pyyntö polkuun /path palauttaa käyttäjälle merkkijonon "Oikein!"
+Toteuta pakkauksessa hellopaths olevaan luokkaan HelloPathsController seuraava 
+toiminnallisuus:
+
+Pyyntö polkuun /hello palauttaa käyttäjälle merkkijonon "Hello"
+Pyyntö polkuun /paths palauttaa käyttäjälle merkkijonon "Paths"

@@ -31,8 +31,7 @@ public class HelloServer {
             printWriter.println("Location: http://localhost:8080/");
             printWriter.println();
             
-            try {
-                BufferedReader bufferedReader = new BufferedReader(new FileReader("index.html"));
+            try (BufferedReader bufferedReader = new BufferedReader(new FileReader("index.html"))) {
                 String line;
                 while ((line = bufferedReader.readLine()) != null) {
                     printWriter.println(line);

@@ -24,11 +24,19 @@ public class HelloPathVariablesController {
         this.items.put("montera", new Item("Montera", "hat"));
     }
 
-
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("item", this.items.get("default"));
         return "index";
     }
 
+    @GetMapping("/{keyword}")
+    public String find(Model model, @PathVariable String keyword) {
+        for (String key : items.keySet()) {
+            if (key.contains(keyword)) {
+                model.addAttribute("item", items.get(key));
+            }
+        }
+        return "index";
+    }
 }

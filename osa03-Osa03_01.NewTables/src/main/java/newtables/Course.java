@@ -25,6 +25,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 public class Course extends AbstractPersistable<Long>{
     
     private String name;
+    
     @ManyToMany(mappedBy = "courses")
     private List<Student> students = new ArrayList<>();
 }

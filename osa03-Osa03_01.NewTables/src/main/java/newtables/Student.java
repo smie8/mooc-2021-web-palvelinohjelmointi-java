@@ -28,11 +28,12 @@ public class Student extends AbstractPersistable<Long>{
     
     private String first_name;
     private String last_name;
+    
     @ManyToMany
     @JoinTable(
         name = "Enrollment",
-        joinColumns = { @JoinColumn(name = "student_id") },
-        inverseJoinColumns = { @JoinColumn(name = "course_id") }
+        joinColumns = { @JoinColumn(name = "student_id", referencedColumnName = "id") },
+        inverseJoinColumns = { @JoinColumn(name = "course_id", referencedColumnName = "id") }
     )
     private List<Course> courses = new ArrayList<>();
 }

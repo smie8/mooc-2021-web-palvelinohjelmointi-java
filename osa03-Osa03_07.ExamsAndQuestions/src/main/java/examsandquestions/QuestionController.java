@@ -10,15 +10,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class QuestionController {
 
+    @Autowired
+    private QuestionRepository questionRepository;
 
     @GetMapping("/questions")
     public String list(Model model) {
+        model.addAttribute("questions", questionRepository.findAll());;
         return "questions";
     }
 
     @PostMapping("/questions")
     public String addQuestion(@RequestParam String title, @RequestParam String content) {
-
+        Question newQuestion = new Question(title, content, null);
+        questionRepository.save(newQuestion);
 
         return "redirect:/questions";
     }

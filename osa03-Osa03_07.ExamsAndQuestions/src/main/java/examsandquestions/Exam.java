@@ -1,7 +1,10 @@
 package examsandquestions;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,8 +17,8 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 public class Exam extends AbstractPersistable<Long> {
 
     private String subject;
-
     private LocalDate examDate;
-
-
+    
+    @OneToMany
+    private List<Question> questions = new ArrayList<>();
 }

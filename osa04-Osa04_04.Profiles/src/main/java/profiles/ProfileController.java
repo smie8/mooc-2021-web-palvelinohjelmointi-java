@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ProfileController {
 
+    @Value("${spring.profiles.active:unknown}")
+    private String activeProfile;
 
     @ResponseBody
     @GetMapping("/profile")
     public String getProfile() {
-        return "Hello world!";
+        return activeProfile;
     }
 
     public String home() {

@@ -15,10 +15,24 @@ public class AirportService {
     }
 
     public void create(String identifier, String name) {
-        Airport a = new Airport();
-        a.setIdentifier(identifier);
-        a.setName(name);
+        boolean airportNameExists = airportNameExists(name, airportRepository.findAll());
+        
+        if (!airportNameExists) {
+            Airport a = new Airport();
+            a.setIdentifier(identifier);
+            a.setName(name);
 
-        airportRepository.save(a);
+            airportRepository.save(a); 
+        }
+    }
+    
+    public static boolean airportNameExists(String name, List<Airport> airports) {
+        for (Airport airport : airports) {
+            if (airport.getName().equals(name)) {
+                return true;
+            }
+        }
+        
+        return false;
     }
 }

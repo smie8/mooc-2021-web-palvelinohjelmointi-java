@@ -20,12 +20,27 @@ public class ReloadController {
     private HttpSession session;
 
     @RequestMapping("*")
-    public String reload(Model model) {
-
-        model.addAttribute("status", new ReloadStatus());
-
-
-        model.addAttribute("scores", reloadStatusRepository.findAll());
+    public String reload(Model model, HttpSession session) {
+        ReloadStatus reloadStatus;
+        
+        if (session.getAttribute("name") != null) {
+            String name = (String) session.getAttribute("name");
+            reloadStatus = reloadStatusRepository.findByName(name);
+        } else {
+            String generatedName = "user_" + UUID.randomUUID().toString().substring(0, 5);
+            reloadStatus = new ReloadStatus(generatedName, 0);
+        }
+        
+        session.setAttribute("name", reloadStatus.getName());
+        
+        reloadStatus.setReloads(reloadStatus.getReloads() + 1);
+        
+        reloadStatusRepository.save(reloadStatus);
+        model.addAttribute("status", reloadStatus);
+        
+        Pageable pageable = PageRequest.of(0, 5, Sort.by("reloads").descending());
+        model.addAttribute("scores", reloadStatusRepository.findAll(pageable));
+        
         return "index";
     }
 }

@@ -14,6 +14,8 @@ public class MessageController {
     @Autowired
     private MessageRepository messageRepository;
 
+    // TODO: show only to "maxwell_smart"
+    // TODO: set password to kenkapuhelin
     @GetMapping("/messages")
     public String view(Model model) {
         model.addAttribute("messages", messageRepository.findAll());

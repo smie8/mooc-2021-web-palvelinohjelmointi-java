@@ -1,3 +1,5 @@
+Tehtävän ohjelmakoodiin on toteutettu käyttäjät tunnistava sovellus, joka tallentaa käyttäjien salasanat salattuna tietokantaan. Luo sovellukseen kaksi käyttäjää, joilla on samat salasanat. Käyttäjien luominen onnistuu polun /accounts kautta.
 
-Tehtävässä on sovellus viestien näyttämiseen. Tehtävänäsi on lisätä siihen salaustoiminnallisuus — kenenkään muun kuin käyttäjän "maxwell_smart" ei tule päästä viesteihin käsiksi. Aseta Maxwellin salasanaksi "kenkapuhelin".
+Käy tämän jälkeen tarkastelemassa sovelluksen tietokantaa H2-konsolissa. Vaikka kummankin lisäämäsi käyttäjän salasana on sama, pitäisi tietokannassa olevien hajautusarvojen olla erilaiset.
 
+Tehtävässä ei ole testejä.

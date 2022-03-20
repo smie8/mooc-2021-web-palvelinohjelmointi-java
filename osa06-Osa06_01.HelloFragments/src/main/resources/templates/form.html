@@ -1,15 +1,10 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Supersite</title>
+    <head th:replace="fragments/fragments :: head">
+        <title></title>
     </head>
     <body>
-        <header>
-            <a th:href="@{/index}">Main page</a> | 
-            <a th:href="@{/list}">List</a> |
-            <a th:href="@{/form}">Form</a>
-        </header>
+        <header th:replace="fragments/fragments :: header"></header>
 
         <section>
             <h1>Super site!</h1>
@@ -25,8 +20,6 @@
             <input type="submit" value="Suggest! (no guarantees)"/>
         </form>
 
-        <footer>
-            &copy; Epic web developers paid by the hour!
-        </footer>
+        <footer th:replace="fragments/fragments :: footer"></footer>
     </body>
 </html>

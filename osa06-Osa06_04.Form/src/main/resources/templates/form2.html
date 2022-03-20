@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head th:replace="fragments/layout :: head">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <meta charset="UTF-8" />
         <title>Layout</title>
     </head>
@@ -17,9 +19,13 @@
             </section>
 
             <section class="container">
-                <p>
-                    ... when you've finished it!
-                </p>
+                <form th:action="@{/form}" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control mr-sm-2" name="name"/>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Submit!"/>
+                </form>
             </section>
         </main>
 

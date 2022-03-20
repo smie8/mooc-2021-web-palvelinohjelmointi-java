@@ -29,7 +29,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         true,
         true,
         true,
-//        Arrays.asList(new SimpleGrantedAuthority("USER")));
         account.getAuthorities()
                 .stream()
                 .map(authority -> new SimpleGrantedAuthority(authority))

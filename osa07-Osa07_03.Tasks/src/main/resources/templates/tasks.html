@@ -7,8 +7,16 @@
     <body>
 
         <h2>Tasks</h2>
+        <ul id="tasks"></ul>
+        
+        <form id="form" action="javascript:addTask()" method="POST">
+            <label for="task">Task:</label>
+            <input type="text" name="task" value="" id="task"/>
+            <input type="submit" value="Add"/>
+        </form>
 
         <!-- TODO: add the ability to list and add tasks (using Javascript!) -->
-
+        <script th:inline="javascript"> var contextRoot = /*[[@{/}]]*/ '';</script>
+        <script th:src="@{/javascript/tasks.js}" defer></script>
     </body>
 </html>

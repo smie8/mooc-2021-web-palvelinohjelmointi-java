@@ -30,12 +30,12 @@ public class GameController {
     }
     
     @GetMapping("/games/{name}")
-    public Game getGame(@PathVariable String name) {
+    public Game getGame(@PathVariable("name") String name) {
         return gameRepository.findByName(name);
     }
     
     @DeleteMapping("/games/{name}")
-    public Game deleteGame(@PathVariable String name) {
+    public Game deleteGame(@PathVariable("name") String name) {
         Game game = gameRepository.findByName(name);
         gameRepository.delete(game);
         return game;

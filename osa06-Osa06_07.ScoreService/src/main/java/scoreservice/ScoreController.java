@@ -28,23 +28,23 @@ public class ScoreController {
     private GameRepository gameRepository;
     
     @PostMapping("/games/{name}/scores")
-    public Score postScore(@RequestBody Score score, @PathVariable String name) {
+    public Score postScore(@RequestBody Score score, @PathVariable("name") String name) {
         score.setGame(gameRepository.findByName(name));
         return scoreRepository.save(score);
     }
     
     @GetMapping("/games/{name}/scores")
-    public List<Score> getScores(@PathVariable String name) {
+    public List<Score> getScores(@PathVariable("name") String name) {
         return scoreRepository.findByGame(gameRepository.findByName(name));
     }
     
     @GetMapping("/games/{name}/scores/{id}")
-    public Score getScore(@PathVariable String name, @PathVariable Long id) {
+    public Score getScore(@PathVariable("name") String name, @PathVariable("id") Long id) {
         return scoreRepository.findByGameAndId(gameRepository.findByName(name), id);
     }
     
     @DeleteMapping("/games/{name}/scores/{id}")
-    public Score deleteScore(@PathVariable String name, @PathVariable Long id) {
+    public Score deleteScore(@PathVariable("name") String name, @PathVariable("id") Long id) {
         Score score = scoreRepository.findByGameAndId(gameRepository.findByName(name), id);
         scoreRepository.delete(score);
         return score;

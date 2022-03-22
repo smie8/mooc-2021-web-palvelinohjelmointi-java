@@ -1,0 +1,5 @@
+Kumpulan kampuksella majaileva ilmatieteen laitos kaipailee pientä viritystä omaan sääpalveluunsa. Tällä hetkellä palvelussa on toiminnallisuus sijaintien hakemiseen ja lisäämiseen. Ilmatieteen laitos on lisäksi toteuttanut säähavaintojen lisäämisen suoraan tuotantotietokantaan, mihin ei tässä palvelussa päästä käsiksi. Palvelussa halutaan kuitenkin muutama lisätoiminnallisuus:
+
+Lisää sovellukseen välimuistitoiminnallisuus. Osoitteisiin /locations ja /locations/{id} tehtyjen hakujen tulee toimia siten, että jos haettava sijainti ei ole välimuistissa, se haetaan tietokannasta ja tallennetaan välimuistiin. Jos sijainti taas on välimuistissa, tulee se palauttaa sieltä ilman tietokantahakua.
+
+Lisää tämän jälkeen sovellukseen toiminnallisuus, missä käytössä oleva välimuisti tyhjennetään kun käyttäjä lisää uuden sijainnin tai tekee GET-tyyppisen pyynnön osoitteeseen /flushcaches. Erityisesti jälkimmäinen on tärkeä asiakkaalle, sillä se lisää tietokantaan tietoa myös palvelinohjelmiston ulkopuolelta.

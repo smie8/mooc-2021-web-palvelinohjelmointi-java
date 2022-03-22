@@ -1,6 +1,8 @@
 package weatherservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,21 +15,24 @@ public class LocationController {
 
     @Autowired
     private LocationRepository locationRepository;
-
+    
+    @Autowired
+    private LocationService locationService;
 
     @GetMapping("/locations")
     public String list(Model model) {
-model.addAttribute("locations", locationRepository.findAll());
+        model.addAttribute("locations", locationService.getLocations());
         return "locations";
     }
 
     @GetMapping("/locations/{id}")
     public String view(Model model, @PathVariable Long id) {
-model.addAttribute("location", locationRepository.getOne(id));
+        model.addAttribute("location", locationService.getLocation(id));
         return "location";
     }
 
     @PostMapping("/locations")
+    @CacheEvict(cacheNames = {"locations"}, allEntries = true)
     public String add(@ModelAttribute Location location) {
         locationRepository.save(location);
         return "redirect:/locations";
